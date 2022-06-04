@@ -8,7 +8,7 @@ public class LoginThread extends MyRunnable {
     @Override
     public void _run() {
         if (getStart().login()) {
-            getStart().setBackGround(PHOTO_PATH);
+            getStart().setBackGround(PHOTO_PATH); //wow
             getStart().getSystemMessages().setText(SYSTEM_MESSAGE);
             getStart().setMessageList();
             stop();
