@@ -1,13 +1,17 @@
 public abstract class MyRunnable implements Runnable {
     private boolean running = true;
     private static final int SPEED =0;
-    private Start start;
+    private MyRunnable other;
+    private StartSystemDriver startSystemDriver;
 
-    public MyRunnable(Start start) {
-        this.start=start;
+    public MyRunnable(StartSystemDriver startSystemDriver) {
+        this.startSystemDriver = startSystemDriver;
     }
-    public Start getStart(){
-        return this.start;
+    public StartSystemDriver getStart(){
+        return this.startSystemDriver;
+    }
+    public void setRunning(boolean running){
+        this.running=running;
     }
 
     public void stop() {

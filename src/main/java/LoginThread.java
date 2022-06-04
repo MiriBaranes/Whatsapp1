@@ -1,17 +1,15 @@
-import java.awt.*;
-
 public class LoginThread extends MyRunnable {
+    private static final String PHOTO_PATH="52141889_101.jpg";
+    private static final String SYSTEM_MESSAGE="Login Successfully";
 
-    public LoginThread(Start start) {
-        super(start);
+    public LoginThread(StartSystemDriver startSystemDriver) {
+        super(startSystemDriver);
     }
-
-
     @Override
     public void _run() {
         if (getStart().login()) {
-            getStart().setBackGround("52141889_101.jpg");
-            getStart().getSystemMessages().setText("Login Successfully");
+            getStart().setBackGround(PHOTO_PATH);
+            getStart().getSystemMessages().setText(SYSTEM_MESSAGE);
             getStart().setMessageList();
             stop();
         }

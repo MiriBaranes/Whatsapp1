@@ -3,22 +3,23 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class MessageConfirmation extends BasicJPanel {
     private static final String MESSAGE_START = "Enter a valid MessageWhatsapp and phone numbers split with ',' char,  ->";
     public static final int SIZE = 100;
+    private static final String PHOTO_PATH="gallery_6154_large.jpg";
+    private static final String SYSTEM_MESSAGE="Whatsaap, Integrity check";
     private boolean valid;
     private JTextField userTextPhoneNumber;
     private JTextField userTextMessage;
     private JLabel massageToUser;
-    private List<String> validPhoneNumbers;
-    private List<String> notValidPhoneNumbers;
+    private final List<String> validPhoneNumbers;
+    private final List<String> notValidPhoneNumbers;
     private String message;
     private Button button;
 
     public MessageConfirmation() {
-        super(0, 0, Const.WINDOW_W, Const.WINDOW_H, "gallery_6154_large.jpg", "Whatsaap, Integrity check");
+        super(0, 0, Const.WINDOW_W, Const.WINDOW_H, PHOTO_PATH, SYSTEM_MESSAGE);
         valid = false;
         this.validPhoneNumbers = new LinkedList<>();
         this.notValidPhoneNumbers = new LinkedList<>();
@@ -47,15 +48,15 @@ public class MessageConfirmation extends BasicJPanel {
                 confirm.addActionListener(e1 -> {
                     confirm.setVisible(false);
                     ArrayList<MessageWhatsapp> messageWhatsappList = new ArrayList<>();
-                    for (int i = 0; i < validPhoneNumbers.size(); i++) {
-                        messageWhatsappList.add(new MessageWhatsapp(validPhoneNumbers.get(i), message));
+                    for (String validPhoneNumber : validPhoneNumbers) {
+                        messageWhatsappList.add(new MessageWhatsapp(validPhoneNumber, message));
                     }
-                    Start mainDriver = new Start(messageWhatsappList);
+                    StartSystemDriver mainDriver = new StartSystemDriver(messageWhatsappList);
                     MainStart mainStart = new MainStart(mainDriver);
                     (SwingUtilities.getAncestorOfClass(JFrame.class, this)).setVisible(false);
                     mainStart.setVisible(true);
                 });
-                Button cancel = new Button("cancel");
+                Button cancel = new Button("Cancel");
                 cancel.setBounds(confirm.getWidth(), Const.WINDOW_H - 100, Const.BUTTON_W / 2, 50);
                 cancel.addActionListener(e1 -> {
                     button.setVisible(true);
@@ -86,6 +87,9 @@ public class MessageConfirmation extends BasicJPanel {
         }
         if (validPhoneNumbers.size() > 0 && message != null) {
             this.valid = true;
+        }else{
+            this.validPhoneNumbers.clear();
+            this.notValidPhoneNumbers.clear();
         }
     }
 

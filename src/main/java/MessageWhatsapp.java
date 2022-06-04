@@ -9,15 +9,20 @@ public class MessageWhatsapp {
     private static final String MASSAGE_OUT_CLASS = "message-out";
     private static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final int UN_SENT = 0;
-    public static final int SENT_STATUS_INT = 1;
-    public static final int ACCEPTED_STATUS_INT = 2;
-    public static final int SEEN_STATUS_INT = 3;
+    public static final int DELIVERED=1;
+    public static final int ERROR_STATUS_INT = 2;
+    public static final int SENT_STATUS_INT = 3;
+    public static final int ACCEPTED_STATUS_INT = 4;
+    public static final int SEEN_STATUS_INT = 5;
+    private static final String DELIVERED_STATUS="Status message---> delivered";
     public static final String SENT_STATUS = "Status message---> ✔ - Sent";
     public static final String ACCEPTED_STATUS = "Status message---> ✔✔ - Sent & Accepted";
     public static final String SEEN_STATUS = "Status Message---> ✔✔ - Sent & Accepted & Reed";
+    public static final String ERROR_STATUS = "Status Message---> Error! the number of this phone number not exsit in whatsapp";
     private String phoneNumber;
     private String message;
     private boolean sent;
+    private int typeSent;
     private String status;
     private String messageBack;
 
@@ -26,11 +31,22 @@ public class MessageWhatsapp {
         this.message = message;
         this.status = "Status Message---> Not Sent loading...";
         this.messageBack = null;
+        this.typeSent = UN_SENT;
         this.sent = false;
+    }
+
+    public void setTypeSent(int typeSent) {
+        if (typeSent >= 0 && typeSent <= SEEN_STATUS_INT) {
+            this.typeSent = typeSent;
+            setStatus(typeSent);
+        }
     }
 
     public void setStatus(int status) {
         switch (status) {
+            case DELIVERED -> {
+                this.status=DELIVERED_STATUS;
+            }
             case SENT_STATUS_INT -> {
                 this.status = SENT_STATUS;
             }
@@ -40,19 +56,14 @@ public class MessageWhatsapp {
             case SEEN_STATUS_INT -> {
                 this.status = SEEN_STATUS;
             }
+            case ERROR_STATUS_INT -> {
+                this.status = ERROR_STATUS;
+            }
         }
     }
 
     public int getTypeSent() {
-        int type = UN_SENT;
-        if (status.equals(SENT_STATUS)) {
-            type = SENT_STATUS_INT;
-        } else if (status.equals(ACCEPTED_STATUS)) {
-            type = ACCEPTED_STATUS_INT;
-        } else if (status.equals(SEEN_STATUS)) {
-            type = SEEN_STATUS_INT;
-        }
-        return type;
+        return this.typeSent;
     }
 
     public void setMessageBack(String messageBack) {
@@ -81,7 +92,7 @@ public class MessageWhatsapp {
     }
 
     public void sent() {
-        this.status="Status Message---> The message has been forwarded";
+        this.status = "Status Message---> The message has been forwarded";
         this.sent = true;
     }
 
@@ -101,7 +112,7 @@ public class MessageWhatsapp {
 
 
     public boolean isSent() {
-        return sent;
+        return this.typeSent==DELIVERED;
     }
 
     @Override
@@ -109,6 +120,6 @@ public class MessageWhatsapp {
         return "For= " + phoneNumber + "\n" +
                 " Message= " + message + "\n" +
                 " status=" + status +
-                " messageBack=" + messageBack+"\n\n";
+                " \nmessageBack=" + messageBack + "\n\n";
     }
 }
