@@ -17,7 +17,11 @@ public class StartSystemDriver extends BasicJPanel {
     public static final String DRIVER_GET = "https://web.whatsapp.com/send?phone=972";
     private static final String START_STATUS_MESSAGE = "Status message---> The message is loading - not sent yet";
     private static final String START_MESSAGE="Try To connect! you need to Scan the QR";
-    private final ChromeDriver driver;
+    private static final String TITLE_REPORT_BUTTON="Click Here for make a report massage!";
+    private static final String LOGIN_CLASS_NAME="ldL67";
+    private static final String WHATSAPP_PHAT="https://web.whatsapp.com/";
+    private static final String PHOTO_PATH="QR.png";
+    private ChromeDriver driver;
     private JLabel systemMessages;
     private final ArrayList<MessageWhatsapp> messageList;
     private final ArrayList<MessageWhatsapp> errorMessages;
@@ -25,11 +29,7 @@ public class StartSystemDriver extends BasicJPanel {
 
 
     public StartSystemDriver(ArrayList<MessageWhatsapp> list) {
-        super(0, 0, Const.WINDOW_W, Const.WINDOW_H, "QR.png");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\97252\\Downloads\\chromedriver_win32 (1)\\1\\chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("user-fata-dir=C:\\Users\\97252\\AppData\\Local\\Google\\Chrome\\User Data\\Default");
-        this.driver = new ChromeDriver();
+        super(0, 0, Const.WINDOW_W, Const.WINDOW_H, PHOTO_PATH);
         this.messageList = list;
         this.errorMessages = new ArrayList<>();
         this.statusMessageList = new HashMap<>();
@@ -90,28 +90,32 @@ public class StartSystemDriver extends BasicJPanel {
     }
 
     public void startAct() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\97252\\Downloads\\chromedriver_win32 (1)\\1\\chromedriver.exe");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("user-fata-dir=C:\\Users\\97252\\AppData\\Local\\Google\\Chrome\\User Data\\Default");
+        this.driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://web.whatsapp.com/");
+        driver.get(WHATSAPP_PHAT);
         Util.sleep(Const.SEC*2);
-        systemMessages = addJLabel(START_MESSAGE, 0, 0, Const.WINDOW_W, 100, 20, Color.blue);
+        systemMessages = addJLabel(START_MESSAGE, 0, 0, Const.WINDOW_W, Const.SIZE, 20, Color.blue);
         systemMessages.setOpaque(true);
         repaint();
     }
 
     public void initReportButton() {
-        Button summaryReport = new Button("Click Here for make a report massage!");
-        summaryReport.setBounds(0, Const.WINDOW_H - 100, Const.WINDOW_W, 50);
+        Button summaryReport = new Button(TITLE_REPORT_BUTTON);
+        summaryReport.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.WINDOW_W, Const.SIZE/2);
         summaryReport.addActionListener(e -> {
             writeToFile();
         });
         summaryReport.setBackground(Color.lightGray);
         summaryReport.setForeground(Color.white);
-        summaryReport.setFont(new Font("ariel", Font.BOLD, 15));
+        summaryReport.setFont(Const.FONT);
         this.add(summaryReport);
     }
 
     public boolean login() {
-        return driver.findElements(By.className("ldL67")).size() != 0;
+        return driver.findElements(By.className(LOGIN_CLASS_NAME)).size() != 0;
     }
 
     public void getIn() {

@@ -55,7 +55,7 @@ public class StatusMessageThread extends MyRunnable {
                         messageWhatsapp.setTypeSent(MessageWhatsapp.SENT_STATUS_INT);
                     } else if (find.equals(SENT_2_3)) {
                         messageWhatsapp.setTypeSent(MessageWhatsapp.ACCEPTED_STATUS_INT);
-                        String className = read.getAttribute("class");
+                        String className = read.getAttribute(Const.CLASS);
                         if (className.equals(CLASS_OF_READ_MESSAGE)) {
                             messageWhatsapp.setTypeSent(MessageWhatsapp.SEEN_STATUS_INT);
                         }
@@ -75,7 +75,7 @@ public class StatusMessageThread extends MyRunnable {
     public boolean isISentThisMessage(WebElement myElement) {
         boolean iSent = false;
         if (myElement != null) {
-            String classSent = myElement.getAttribute("class");
+            String classSent = myElement.getAttribute(Const.CLASS);
             if (classSent.contains(MASSAGE_OUT_CLASS)) {
                 iSent = true;
             }

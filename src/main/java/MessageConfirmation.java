@@ -42,7 +42,7 @@ public class MessageConfirmation extends BasicJPanel {
             if (isValid()) {
                 button.setVisible(false);
                 massageToUser.setText("Your sent " + (notValidPhoneNumbers.size() + validPhoneNumbers.size()) + "" +
-                        ", " + validPhoneNumbers.size() + " are valid, do you wont to sent the message to this list ?");
+                        " Phone numbers, " + validPhoneNumbers.size() + " are valid, do you wont to sent the message to this list ?");
                 Button confirm = new Button("Confirm");
                 confirm.setBounds(0, Const.WINDOW_H - 100, Const.BUTTON_W / 2, 50);
                 confirm.addActionListener(e1 -> {
