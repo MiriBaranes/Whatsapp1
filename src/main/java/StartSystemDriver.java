@@ -115,7 +115,14 @@ public class StartSystemDriver extends BasicJPanel {
     }
 
     public boolean login() {
-        return driver.findElements(By.className(LOGIN_CLASS_NAME)).size() != 0;
+        List<WebElement> in=new LinkedList<>();
+        try {
+            in=driver.findElements(By.className(LOGIN_CLASS_NAME));
+
+        }catch (Exception ignored){
+
+        }
+        return in.size() != 0;
     }
 
     public void getIn() {

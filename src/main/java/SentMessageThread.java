@@ -23,6 +23,7 @@ public class SentMessageThread extends MyRunnable {
         if (!loginThread.isRunning()) {
             for (MessageWhatsapp message : messageWhatsappArrayList) {
                 if (!message.isSent() && message.getTypeSent() != MessageWhatsapp.ERROR_STATUS_INT) {
+                    Util.sleep(Const.SEC);
                     getStart().setDriverPage(message.getFormatPhoneNumber());
                     do {
                         sendMessage(message);

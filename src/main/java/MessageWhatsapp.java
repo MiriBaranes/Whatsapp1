@@ -91,11 +91,6 @@ public class MessageWhatsapp {
         return this.message;
     }
 
-    public void sent() {
-        this.status = "Status Message---> The message has been forwarded";
-        this.sent = true;
-    }
-
 
     public void writeToFile() {
         FileWriter fileWriter = null;

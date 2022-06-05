@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MessageConfirmation extends BasicJPanel {
-    private static final String MESSAGE_START = "Enter a valid MessageWhatsapp and phone numbers split with ',' char,  ->";
+    private static final String MESSAGE_START = "Enter a valid Message WhatsApp and phone numbers split with ',' char,  ->";
     public static final int SIZE = 100;
     private static final String PHOTO_PATH="gallery_6154_large.jpg";
     private static final String SYSTEM_MESSAGE="Whatsaap, Integrity check";
@@ -36,7 +36,7 @@ public class MessageConfirmation extends BasicJPanel {
 
     public void addButton() {
         this.button = new Button("Click here to check valid");
-        this.button.setBounds(0, Const.WINDOW_H - 100, Const.BUTTON_W, 50);
+        this.button.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.BUTTON_W, Const.SIZE/2);
         button.addActionListener(e -> {
             validInput();
             if (isValid()) {
