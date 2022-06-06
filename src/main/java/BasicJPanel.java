@@ -28,13 +28,13 @@ public class BasicJPanel extends JPanel {
 
     public JTextField addJTextField(String title, int y) {
         JLabel jLabel = addJLabel(title, 0, y, Const.BUTTON_W, Const.BUTTON_H, 15, Color.black);
-        jLabel.setForeground(Color.green.darker());
+        jLabel.setForeground(Color.CYAN.darker());
         return addTextField("", jLabel.getX() + jLabel.getWidth() + 1, y, Const.BUTTON_W, Const.BUTTON_H);
     }
 
     public JTextField addJTextFieldWithTitleBlowAnotherTextField(JTextField textField, String title, int y) {
         JLabel jLabel = addJLabel(title, 0, y, Const.BUTTON_W, Const.BUTTON_H, 15, Color.black);
-        jLabel.setForeground(Color.green.darker());
+        jLabel.setForeground(Color.CYAN.darker());
         return addTextFieldBelowAntherTextField(textField);
     }
 

@@ -29,7 +29,7 @@ public class MessageConfirmation extends BasicJPanel {
     }
 
     public void act() {
-        this.userTextPhoneNumber = addJTextField("Enter a phone numbers, split with','-----> ", SIZE * 3);
+        this.userTextPhoneNumber = addJTextField("Enter a phone numbers, split with',' -----> ", SIZE * 3);
         this.userTextMessage = addJTextFieldWithTitleBlowAnotherTextField(userTextPhoneNumber, "Enter a message to send---->", userTextPhoneNumber.getY() + userTextPhoneNumber.getHeight());
         this.massageToUser = addJLabel(MESSAGE_START, 0, userTextPhoneNumber.getY() - userTextPhoneNumber.getHeight(), Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
     }
@@ -44,7 +44,7 @@ public class MessageConfirmation extends BasicJPanel {
                 massageToUser.setText("Your entered: " + (notValidPhoneNumbers.size() + validPhoneNumbers.size()) +
                         " phone numbers. " + validPhoneNumbers.size() + "numbers are valid. Do you want to send the message to this list?");
                 Button confirm = new Button("Confirm");
-                confirm.setBounds(0, Const.WINDOW_H - 100, Const.BUTTON_W / 2, 50);
+                confirm.setBounds(0, Const.WINDOW_H - SIZE, Const.BUTTON_W / 2, SIZE/2);
                 confirm.addActionListener(e1 -> {
                     confirm.setVisible(false);
                     ArrayList<MessageWhatsapp> messageWhatsappList = new ArrayList<>();
@@ -57,7 +57,7 @@ public class MessageConfirmation extends BasicJPanel {
                     mainStart.setVisible(true);
                 });
                 Button cancel = new Button("Cancel");
-                cancel.setBounds(confirm.getWidth(), Const.WINDOW_H - 100, Const.BUTTON_W / 2, 50);
+                cancel.setBounds(confirm.getWidth(), Const.WINDOW_H - SIZE, Const.BUTTON_W / 2, SIZE/2);
                 cancel.addActionListener(e1 -> {
                     button.setVisible(true);
                     cancel.setVisible(false);
