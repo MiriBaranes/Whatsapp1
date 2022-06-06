@@ -29,9 +29,12 @@ public class MessageConfirmation extends BasicJPanel {
     }
 
     public void act() {
-        this.userTextPhoneNumber = addTextField("", SIZE * 4, SIZE * 3, SIZE * 3, SIZE / 2);
-        this.userTextMessage = addTextFieldBelowAntherTextField(userTextPhoneNumber, null);
-        this.massageToUser = addJLabel(MESSAGE_START, 0, userTextPhoneNumber.getY() - userTextPhoneNumber.getHeight(), Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
+        this.userTextPhoneNumber=addJTextField("Enter a phone numbers, split with','-----> ",SIZE*3);
+        this.userTextMessage=addJTextFieldWithTitleBlowAnotherTextField(userTextPhoneNumber,"Enter a message to send---->",userTextPhoneNumber.getY()+userTextPhoneNumber.getHeight());
+        this.massageToUser=addJLabel(MESSAGE_START,0,userTextPhoneNumber.getY()-userTextPhoneNumber.getHeight(),Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
+//        this.userTextPhoneNumber = addTextField("", SIZE * 4, SIZE * 3, SIZE * 3, SIZE / 2);
+//        this.userTextMessage = addTextFieldBelowAntherTextField(userTextPhoneNumber, null);
+//        this.massageToUser = addJLabel(MESSAGE_START, 0, userTextPhoneNumber.getY() - userTextPhoneNumber.getHeight(), Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
     }
 
     public void addButton() {

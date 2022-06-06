@@ -22,6 +22,16 @@ public class BasicJPanel extends JPanel {
         this.backGround=new ImageIcon(fieldName);
         init();
     }
+    public JTextField addJTextField(String title, int y) {
+        JLabel jLabel = addJLabel(title, 0, y, Const.BUTTON_W, Const.BUTTON_H, 15, Color.black);
+        jLabel.setForeground(Color.green.darker());
+        return addTextField("", jLabel.getX() + jLabel.getWidth() + 1, y, Const.BUTTON_W, Const.BUTTON_H);
+    }
+    public JTextField addJTextFieldWithTitleBlowAnotherTextField(JTextField textField,String title, int y) {
+        JLabel jLabel = addJLabel(title, 0, y, Const.BUTTON_W, Const.BUTTON_H, 15, Color.black);
+       jLabel.setForeground(Color.green.darker());
+        return addTextFieldBelowAntherTextField(textField);
+    }
     public void init(){
         this.setLayout(null);
         this.setDoubleBuffered(true);
@@ -63,8 +73,8 @@ public class BasicJPanel extends JPanel {
         this.add(text);
         return text;
     }
-    public JTextField addTextFieldBelowAntherTextField(JTextField other,String string){
-        return addTextField(string,other.getX(),other.getY()+other.getHeight(),other.getWidth(),other.getHeight());
+    public JTextField addTextFieldBelowAntherTextField(JTextField other){
+        return addTextField(null,other.getX(),other.getY()+other.getHeight(),other.getWidth(),other.getHeight());
     }
     public JTextField addTextFieldNextAntherTextField(TextField other,String string){
         return addTextField(string,other.getX()+other.getWidth(),other.getY(),other.getWidth(),other.getHeight());

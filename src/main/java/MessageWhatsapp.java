@@ -19,9 +19,8 @@ public class MessageWhatsapp {
     public static final String ACCEPTED_STATUS = "Status message---> ✔✔ - Sent & Accepted";
     public static final String SEEN_STATUS = "Status Message---> ✔✔ - Sent & Accepted & Reed";
     public static final String ERROR_STATUS = "Status Message---> Error! the number of this phone number not exsit in whatsapp";
-    private String phoneNumber;
-    private String message;
-    private boolean sent;
+    private final String phoneNumber;
+    private final String message;
     private int typeSent;
     private String status;
     private String messageBack;
@@ -32,7 +31,6 @@ public class MessageWhatsapp {
         this.status = "Status Message---> Not Sent loading...";
         this.messageBack = null;
         this.typeSent = UN_SENT;
-        this.sent = false;
     }
 
     public void setTypeSent(int typeSent) {

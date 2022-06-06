@@ -20,7 +20,10 @@ public class StatusMessageThread extends MyRunnable {
         super(startSystemDriver);
         this.messageWhatsappArrayList = list;
         this.checked = false;
-        this.sec = 10 / messageWhatsappArrayList.size();
+        if (messageWhatsappArrayList.size()!=0) {
+            this.sec = 10 / messageWhatsappArrayList.size();
+        }
+        else this.sec=0;
     }
 
     @Override

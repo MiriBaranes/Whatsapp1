@@ -6,7 +6,8 @@ import java.util.ArrayList;
 public class SentMessageThread extends MyRunnable {
     private ArrayList<MessageWhatsapp> messageWhatsappArrayList;
     private final LoginThread loginThread;
-    private static final String ERROR_MESSAGE = "_2i3w0";
+    private static final String ERROR_MESSAGE = "_2Nr6U";
+    //"_2i3w0";
     private static final String BUTTON_ERROR_CSS = "div[role='button'][tabindex='0'][class='_20C5O _2Zdgs']";
     private static final String SEND_MESSAGE_TAG = "footer";
     private static final String CSS_BOX_TEXT = "div[role='textbox']";
@@ -72,14 +73,17 @@ public class SentMessageThread extends MyRunnable {
         boolean isError = false;
         try {
             WebElement errorClass = getStart().getDriver().findElement(By.className(ERROR_MESSAGE));
-            if (errorClass.isDisplayed()) {
-                WebElement buttonError = getStart().getDriver().findElement(By.cssSelector(BUTTON_ERROR_CSS));
-                if (buttonError.isDisplayed()) {
-                    buttonError.click();
-                    getStart().addErrorMessages(messageWhatsapp);
-                    messageWhatsapp.setTypeSent(MessageWhatsapp.ERROR_STATUS_INT);
-                    getStart().setJLabelStatusByMessage(messageWhatsapp);
-                    isError = true;
+            if (errorClass != null) {
+                WebElement classType = errorClass.findElement(By.className("_2i3w0"));
+                if (classType != null) {
+                    WebElement buttonError = getStart().getDriver().findElement(By.cssSelector(BUTTON_ERROR_CSS));
+                    if (buttonError != null) {
+                        buttonError.click();
+                        getStart().addErrorMessages(messageWhatsapp);
+                        messageWhatsapp.setTypeSent(MessageWhatsapp.ERROR_STATUS_INT);
+                        getStart().setJLabelStatusByMessage(messageWhatsapp);
+                        isError = true;
+                    }
                 }
             }
         } catch (Exception ignored) {
