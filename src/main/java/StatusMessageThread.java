@@ -10,7 +10,7 @@ public class StatusMessageThread extends MyRunnable {
     public static final String CLASS_OF_READ_MESSAGE = "_3l4_3";
     public static final String CSS_STATUS_MESSAGE = "div[class='do8e0lj9 l7jjieqr k6y3xtnu']";
     public static final String TAG_STATUS_MESSAGE = "span";
-    public static final String ATRRIBUTE_STATUS_MESSAGE = "data-testid";
+    public static final String ATTRIBUTE_STATUS_MESSAGE = "data-testid";
     public static final String MASSAGE_OUT_CLASS = "message-out";
     private boolean checked;
     private final int sec;
@@ -53,7 +53,7 @@ public class StatusMessageThread extends MyRunnable {
                 if (myMessage != null) {
                     WebElement css = myMessage.findElement(By.cssSelector(CSS_STATUS_MESSAGE));
                     WebElement read = css.findElement(By.tagName(TAG_STATUS_MESSAGE));
-                    String find = read.getAttribute(ATRRIBUTE_STATUS_MESSAGE);
+                    String find = read.getAttribute(ATTRIBUTE_STATUS_MESSAGE);
                     if (find.equals(SENT_1)) {
                         messageWhatsapp.setTypeSent(MessageWhatsapp.SENT_STATUS_INT);
                     } else if (find.equals(SENT_2_3)) {

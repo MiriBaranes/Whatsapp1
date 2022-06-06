@@ -1,13 +1,17 @@
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class SentMessageThread extends MyRunnable {
     private ArrayList<MessageWhatsapp> messageWhatsappArrayList;
     private final LoginThread loginThread;
+    private static final String ERROR = "מספר הטלפון ששותף דרך קישור שגוי";
     private static final String ERROR_MESSAGE = "_2Nr6U";
-    //"_2i3w0";
     private static final String BUTTON_ERROR_CSS = "div[role='button'][tabindex='0'][class='_20C5O _2Zdgs']";
     private static final String SEND_MESSAGE_TAG = "footer";
     private static final String CSS_BOX_TEXT = "div[role='textbox']";
@@ -53,13 +57,11 @@ public class SentMessageThread extends MyRunnable {
             try {
                 text = getStart().getDriver().findElement(By.tagName(SEND_MESSAGE_TAG));
                 WebElement textBox = text.findElement(By.cssSelector(CSS_BOX_TEXT));
-                if (textBox != null) {
-                    textBox.sendKeys(messageWhatsapp.getMessage());
-                    WebElement clicked = text.findElement(By.cssSelector(CSS_BUTTON_MESSAGE));
-                    if (clicked != null) {
-                        clicked.click();
-                        messageWhatsapp.setTypeSent(MessageWhatsapp.DELIVERED);
-                    }
+                textBox.sendKeys(messageWhatsapp.getMessage());
+                WebElement clicked = text.findElement(By.cssSelector(CSS_BUTTON_MESSAGE));
+                if (clicked != null) {
+                    clicked.click();
+                    messageWhatsapp.setTypeSent(MessageWhatsapp.DELIVERED);
                 }
                 this.getStart().setJLabelStatusByMessage(messageWhatsapp);
 
@@ -70,24 +72,22 @@ public class SentMessageThread extends MyRunnable {
     }
 
     public boolean errorNumber(MessageWhatsapp messageWhatsapp) {
-        boolean isError = false;
+        boolean error = false;
         try {
             WebElement errorClass = getStart().getDriver().findElement(By.className(ERROR_MESSAGE));
-            if (errorClass != null) {
-                WebElement classType = errorClass.findElement(By.className("_2i3w0"));
-                if (classType != null) {
-                    WebElement buttonError = getStart().getDriver().findElement(By.cssSelector(BUTTON_ERROR_CSS));
-                    if (buttonError != null) {
-                        buttonError.click();
-                        getStart().addErrorMessages(messageWhatsapp);
-                        messageWhatsapp.setTypeSent(MessageWhatsapp.ERROR_STATUS_INT);
-                        getStart().setJLabelStatusByMessage(messageWhatsapp);
-                        isError = true;
-                    }
+            if (errorClass.getText().contains(ERROR)) {
+                WebElement buttonError = getStart().getDriver().findElement(By.cssSelector(BUTTON_ERROR_CSS));
+                if (buttonError != null) {
+                    Util.sleep(1);
+                    buttonError.click();
+                    getStart().addErrorMessages(messageWhatsapp);
+                    messageWhatsapp.setTypeSent(MessageWhatsapp.ERROR_STATUS_INT);
+                    getStart().setJLabelStatusByMessage(messageWhatsapp);
+                    error = true;
                 }
             }
         } catch (Exception ignored) {
         }
-        return isError;
+        return error;
     }
 }

@@ -16,8 +16,8 @@ public class StartSystemDriver extends BasicJPanel {
     public static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final String DRIVER_GET = "https://web.whatsapp.com/send?phone=972";
     private static final String START_STATUS_MESSAGE = "Status message---> The message is loading - not sent yet";
-    private static final String START_MESSAGE="Try To connect! you need to Scan the QR";
-    private static final String TITLE_REPORT_BUTTON="Click Here for make a report massage!";
+    private static final String START_MESSAGE="Try To connect! You need to scan the QR";
+    private static final String TITLE_REPORT_BUTTON="Click here for making a report massage";
     private static final String LOGIN_CLASS_NAME="ldL67";
     private static final String WHATSAPP_PHAT="https://web.whatsapp.com/";
     private static final String PHOTO_PATH="QR.png";

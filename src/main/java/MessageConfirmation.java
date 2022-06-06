@@ -32,20 +32,17 @@ public class MessageConfirmation extends BasicJPanel {
         this.userTextPhoneNumber=addJTextField("Enter a phone numbers, split with','-----> ",SIZE*3);
         this.userTextMessage=addJTextFieldWithTitleBlowAnotherTextField(userTextPhoneNumber,"Enter a message to send---->",userTextPhoneNumber.getY()+userTextPhoneNumber.getHeight());
         this.massageToUser=addJLabel(MESSAGE_START,0,userTextPhoneNumber.getY()-userTextPhoneNumber.getHeight(),Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
-//        this.userTextPhoneNumber = addTextField("", SIZE * 4, SIZE * 3, SIZE * 3, SIZE / 2);
-//        this.userTextMessage = addTextFieldBelowAntherTextField(userTextPhoneNumber, null);
-//        this.massageToUser = addJLabel(MESSAGE_START, 0, userTextPhoneNumber.getY() - userTextPhoneNumber.getHeight(), Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
     }
 
     public void addButton() {
-        this.button = new Button("Click here to check valid");
+        this.button = new Button("Click here to check if input is valid");
         this.button.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.BUTTON_W, Const.SIZE/2);
         button.addActionListener(e -> {
             validInput();
             if (isValid()) {
                 button.setVisible(false);
-                massageToUser.setText("Your sent " + (notValidPhoneNumbers.size() + validPhoneNumbers.size()) + "" +
-                        " Phone numbers, " + validPhoneNumbers.size() + " are valid, do you wont to sent the message to this list ?");
+                massageToUser.setText("Your entered: " + (notValidPhoneNumbers.size() + validPhoneNumbers.size()) +
+                        " phone numbers. " + validPhoneNumbers.size() + "numbers are valid. Do you want to send the message to this list?");
                 Button confirm = new Button("Confirm");
                 confirm.setBounds(0, Const.WINDOW_H - 100, Const.BUTTON_W / 2, 50);
                 confirm.addActionListener(e1 -> {

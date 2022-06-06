@@ -14,11 +14,11 @@ public class MessageWhatsapp {
     public static final int SENT_STATUS_INT = 3;
     public static final int ACCEPTED_STATUS_INT = 4;
     public static final int SEEN_STATUS_INT = 5;
+    public static final String ACCEPTED_STATUS = "Status message---> ✔✔ - Sent & Received";
+    public static final String SEEN_STATUS = "Status Message---> ✔✔ - Sent & Accepted & read";
+    public static final String ERROR_STATUS = "Status Message---> Error! The number does not exist on whatsapp";
     private static final String DELIVERED_STATUS="Status message---> delivered";
     public static final String SENT_STATUS = "Status message---> ✔ - Sent";
-    public static final String ACCEPTED_STATUS = "Status message---> ✔✔ - Sent & Accepted";
-    public static final String SEEN_STATUS = "Status Message---> ✔✔ - Sent & Accepted & Reed";
-    public static final String ERROR_STATUS = "Status Message---> Error! the number of this phone number not exsit in whatsapp";
     private final String phoneNumber;
     private final String message;
     private int typeSent;
@@ -28,7 +28,7 @@ public class MessageWhatsapp {
     public MessageWhatsapp(String phoneNumber, String message) {
         this.phoneNumber = phoneNumber;
         this.message = message;
-        this.status = "Status Message---> Not Sent loading...";
+        this.status = "Status Message--->  Not sent yet. Loading...";
         this.messageBack = null;
         this.typeSent = UN_SENT;
     }
@@ -110,9 +110,9 @@ public class MessageWhatsapp {
 
     @Override
     public String toString() {
-        return "For= " + phoneNumber + "\n" +
-                " Message= " + message + "\n" +
-                " status=" + status +
-                " \nmessageBack=" + messageBack + "\n\n";
+            return "For: " + phoneNumber + "\n" +
+                    " Message: " + message + "\n" +
+                    " Status:" + status +
+                    " \nReply:" + messageBack + "\n\n";
     }
 }
