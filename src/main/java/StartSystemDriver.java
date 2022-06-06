@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class StartSystemDriver extends BasicJPanel {
@@ -88,7 +87,7 @@ public class StartSystemDriver extends BasicJPanel {
         this.repaint();
     }
 
-    public void startAct() {
+    public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\97252\\Downloads\\chromedriver_win32 (1)\\1\\chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("user-fata-dir=C:\\Users\\97252\\AppData\\Local\\Google\\Chrome\\User Data\\Default");
@@ -125,7 +124,7 @@ public class StartSystemDriver extends BasicJPanel {
     }
 
     public void getIn() {
-        startAct();
+        initDriver();
         run();
     }
 
