@@ -5,14 +5,16 @@ public abstract class MyRunnable implements Runnable {
     public MyRunnable(StartSystemDriver startSystemDriver) {
         this.startSystemDriver = startSystemDriver;
     }
-    public StartSystemDriver getStart(){
+
+    public StartSystemDriver getStart() {
         return this.startSystemDriver;
     }
 
     public void stop() {
         running = false;
     }
-    public boolean isRunning(){
+
+    public boolean isRunning() {
         return running;
     }
 

@@ -9,7 +9,7 @@ public class MessageWhatsapp {
     private static final String MASSAGE_OUT_CLASS = "message-out";
     private static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final int UN_SENT = 0;
-    public static final int DELIVERED=1;
+    public static final int DELIVERED = 1;
     public static final int ERROR_STATUS_INT = 2;
     public static final int SENT_STATUS_INT = 3;
     public static final int ACCEPTED_STATUS_INT = 4;
@@ -17,7 +17,7 @@ public class MessageWhatsapp {
     public static final String ACCEPTED_STATUS = "Status message---> ✔✔ - Sent & Received";
     public static final String SEEN_STATUS = "Status Message---> ✔✔ - Sent & Accepted & read";
     public static final String ERROR_STATUS = "Status Message---> Error! The number does not exist on whatsapp";
-    private static final String DELIVERED_STATUS="Status message---> delivered";
+    private static final String DELIVERED_STATUS = "Status message---> delivered";
     public static final String SENT_STATUS = "Status message---> ✔ - Sent";
     private final String phoneNumber;
     private final String message;
@@ -43,7 +43,7 @@ public class MessageWhatsapp {
     public void setStatus(int status) {
         switch (status) {
             case DELIVERED -> {
-                this.status=DELIVERED_STATUS;
+                this.status = DELIVERED_STATUS;
             }
             case SENT_STATUS_INT -> {
                 this.status = SENT_STATUS;
@@ -105,14 +105,14 @@ public class MessageWhatsapp {
 
 
     public boolean isSent() {
-        return this.typeSent==DELIVERED;
+        return this.typeSent == DELIVERED;
     }
 
     @Override
     public String toString() {
-            return "For: " + phoneNumber + "\n" +
-                    " Message: " + message + "\n" +
-                    " Status:" + status +
-                    " \nReply:" + messageBack + "\n\n";
+        return "For: " + phoneNumber + "\n" +
+                " Message: " + message + "\n" +
+                " Status:" + status +
+                " \nReply:" + messageBack + "\n\n";
     }
 }

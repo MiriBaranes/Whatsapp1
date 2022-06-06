@@ -7,8 +7,8 @@ import java.util.List;
 public class MessageConfirmation extends BasicJPanel {
     private static final String MESSAGE_START = "Enter a valid Message WhatsApp and phone numbers split with ',' char,  ->";
     public static final int SIZE = 100;
-    private static final String PHOTO_PATH="gallery_6154_large.jpg";
-    private static final String SYSTEM_MESSAGE="Whatsaap, Integrity check";
+    private static final String PHOTO_PATH = "gallery_6154_large.jpg";
+    private static final String SYSTEM_MESSAGE = "Whatsaap, Integrity check";
     private boolean valid;
     private JTextField userTextPhoneNumber;
     private JTextField userTextMessage;
@@ -29,14 +29,14 @@ public class MessageConfirmation extends BasicJPanel {
     }
 
     public void act() {
-        this.userTextPhoneNumber=addJTextField("Enter a phone numbers, split with','-----> ",SIZE*3);
-        this.userTextMessage=addJTextFieldWithTitleBlowAnotherTextField(userTextPhoneNumber,"Enter a message to send---->",userTextPhoneNumber.getY()+userTextPhoneNumber.getHeight());
-        this.massageToUser=addJLabel(MESSAGE_START,0,userTextPhoneNumber.getY()-userTextPhoneNumber.getHeight(),Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
+        this.userTextPhoneNumber = addJTextField("Enter a phone numbers, split with','-----> ", SIZE * 3);
+        this.userTextMessage = addJTextFieldWithTitleBlowAnotherTextField(userTextPhoneNumber, "Enter a message to send---->", userTextPhoneNumber.getY() + userTextPhoneNumber.getHeight());
+        this.massageToUser = addJLabel(MESSAGE_START, 0, userTextPhoneNumber.getY() - userTextPhoneNumber.getHeight(), Const.WINDOW_W, userTextPhoneNumber.getHeight(), 20, Color.white);
     }
 
     public void addButton() {
         this.button = new Button("Click here to check if input is valid");
-        this.button.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.BUTTON_W, Const.SIZE/2);
+        this.button.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.BUTTON_W, Const.SIZE / 2);
         button.addActionListener(e -> {
             validInput();
             if (isValid()) {
@@ -87,7 +87,7 @@ public class MessageConfirmation extends BasicJPanel {
         }
         if (validPhoneNumbers.size() > 0 && message != null) {
             this.valid = true;
-        }else{
+        } else {
             this.validPhoneNumbers.clear();
             this.notValidPhoneNumbers.clear();
         }

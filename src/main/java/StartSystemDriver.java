@@ -16,11 +16,11 @@ public class StartSystemDriver extends BasicJPanel {
     public static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final String DRIVER_GET = "https://web.whatsapp.com/send?phone=972";
     private static final String START_STATUS_MESSAGE = "Status message---> The message is loading - not sent yet";
-    private static final String START_MESSAGE="Try To connect! You need to scan the QR";
-    private static final String TITLE_REPORT_BUTTON="Click here for making a report massage";
-    private static final String LOGIN_CLASS_NAME="ldL67";
-    private static final String WHATSAPP_PHAT="https://web.whatsapp.com/";
-    private static final String PHOTO_PATH="QR.png";
+    private static final String START_MESSAGE = "Try To connect! You need to scan the QR";
+    private static final String TITLE_REPORT_BUTTON = "Click here for making a report massage";
+    private static final String LOGIN_CLASS_NAME = "ldL67";
+    private static final String WHATSAPP_PHAT = "https://web.whatsapp.com/";
+    private static final String PHOTO_PATH = "QR.png";
     private ChromeDriver driver;
     private JLabel systemMessages;
     private final ArrayList<MessageWhatsapp> messageList;
@@ -50,7 +50,7 @@ public class StartSystemDriver extends BasicJPanel {
         initReportButton();
         int distance = (Const.WINDOW_H - y * 3) / messageList.size();
         for (MessageWhatsapp messageWhatsapp : messageList) {
-            statusMessageList.put(messageWhatsapp, addJLabel(messageWhatsapp.getFormatPhoneNumber() + START_STATUS_MESSAGE, 0, y, Const.WINDOW_W / 2, 30, 10, Color.black));
+            statusMessageList.put(messageWhatsapp, addJLabel(messageWhatsapp.getFormatPhoneNumber() + START_STATUS_MESSAGE, 0, y, Const.WINDOW_W, Const.MESSAGE_H, Const.FONT_SIZE, Color.blue));
             y += distance;
         }
         repaint();
@@ -96,7 +96,7 @@ public class StartSystemDriver extends BasicJPanel {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(WHATSAPP_PHAT);
-        Util.sleep(Const.SEC*2);
+        Util.sleep(Const.SEC * 2);
         systemMessages = addJLabel(START_MESSAGE, 0, 0, Const.WINDOW_W, Const.SIZE, 20, Color.blue);
         systemMessages.setOpaque(true);
         repaint();
@@ -104,7 +104,7 @@ public class StartSystemDriver extends BasicJPanel {
 
     public void initReportButton() {
         Button summaryReport = new Button(TITLE_REPORT_BUTTON);
-        summaryReport.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.WINDOW_W, Const.SIZE/2);
+        summaryReport.setBounds(0, Const.WINDOW_H - Const.SIZE, Const.WINDOW_W, Const.SIZE / 2);
         summaryReport.addActionListener(e -> {
             writeToFile();
         });
@@ -115,11 +115,11 @@ public class StartSystemDriver extends BasicJPanel {
     }
 
     public boolean login() {
-        List<WebElement> in=new LinkedList<>();
+        List<WebElement> in = new LinkedList<>();
         try {
-            in=driver.findElements(By.className(LOGIN_CLASS_NAME));
+            in = driver.findElements(By.className(LOGIN_CLASS_NAME));
 
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
         return in.size() != 0;

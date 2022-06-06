@@ -13,17 +13,16 @@ public class StatusMessageThread extends MyRunnable {
     public static final String ATTRIBUTE_STATUS_MESSAGE = "data-testid";
     public static final String MASSAGE_OUT_CLASS = "message-out";
     private boolean checked;
-    private final int sec;
+    private int sec;
     private final ArrayList<MessageWhatsapp> messageWhatsappArrayList;
 
     public StatusMessageThread(StartSystemDriver startSystemDriver, ArrayList<MessageWhatsapp> list) {
         super(startSystemDriver);
         this.messageWhatsappArrayList = list;
         this.checked = false;
-        if (messageWhatsappArrayList.size()!=0) {
+        if (messageWhatsappArrayList.size() != 0) {
             this.sec = 10 / messageWhatsappArrayList.size();
-        }
-        else this.sec=0;
+        } else stop();
     }
 
     @Override
