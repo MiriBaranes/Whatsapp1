@@ -11,4 +11,5 @@ public class Const {
     public static final String CLASS = "class";
     public static final int MESSAGE_H = 30;
     public static final int FONT_SIZE = 20;
+    public static final String PATH = "C:\\FILE\\1\\t.txt";
 }

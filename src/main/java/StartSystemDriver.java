@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class StartSystemDriver extends BasicJPanel {
     public static final String ALL_MESSAGE_CLASS = "_2wUmf";
-    public static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final String DRIVER_GET = "https://web.whatsapp.com/send?phone=972";
     private static final String START_STATUS_MESSAGE = "Status message---> The message is loading - not sent yet";
     private static final String START_MESSAGE = "Try To connect! You need to scan the QR";
@@ -133,7 +132,7 @@ public class StartSystemDriver extends BasicJPanel {
     public void writeToFile() {
         FileWriter fileWriter;
         try {
-            fileWriter = new FileWriter(PATH);
+            fileWriter = new FileWriter(Const.PATH);
             Set<MessageWhatsapp> list = new HashSet<>();
             list.addAll(messageList);
             list.addAll(errorMessages);

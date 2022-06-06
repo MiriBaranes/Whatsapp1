@@ -5,9 +5,6 @@ import java.io.IOException;
 
 
 public class MessageWhatsapp {
-
-    private static final String MASSAGE_OUT_CLASS = "message-out";
-    private static final String PATH = "C:\\FILE\\1\\t.txt";
     public static final int UN_SENT = 0;
     public static final int DELIVERED = 1;
     public static final int ERROR_STATUS_INT = 2;
@@ -87,20 +84,6 @@ public class MessageWhatsapp {
 
     public String getMessage() {
         return this.message;
-    }
-
-
-    public void writeToFile() {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(PATH);
-            fileWriter.write("For: " + this.getFormatPhoneNumber() + "\nYour message---> " + this.message +
-                    "\n" + this.status + "\n" + this.messageBack);
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
 
